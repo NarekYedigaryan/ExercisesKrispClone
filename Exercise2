@@ -1,0 +1,27 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void reading_from_file(const std::string& file_name)
+{
+    std::cout << file_name<<std::endl;
+}
+
+int main()
+{
+    std::ifstream f1("file.txt");
+    if (!f1.is_open())
+    {
+        std::cerr << "File is not opened";
+        return 1;
+    }
+ 
+    std::string s1;
+    while (!f1.eof())
+    {
+        std::getline(f1, s1);
+        reading_from_file(s1);
+    }
+    f1.close(); 
+    return 0;
+}
