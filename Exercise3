@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void remove_second_line( std::string& str)
+{
+    static int tmp = 1;
+    
+    if (tmp % 2 == 0)
+    {
+         str=" ";
+    }
+    ++tmp;
+}
+
+int main()
+{
+    std::ifstream f1("file.txt");
+    if (!f1.is_open())
+    {
+        std::cerr << "File is not opened";
+        return 1;
+    }
+    
+    std::ofstream f2("output.txt");
+    std::string s1;
+    while (!f1.eof())
+    {
+        std::getline(f1, s1);
+        remove_second_line(s1);
+        f2 << s1<<std::endl;
+    }
+    f1.close(); 
+    return 0;
+}
