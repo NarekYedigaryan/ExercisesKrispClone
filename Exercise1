@@ -1,0 +1,25 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void writing_in_file(std::ofstream& file, const std::string& str)
+{
+    file << str;
+}
+
+int main()
+{
+    std::ofstream f1("file.txt");
+    if (!f1.is_open())
+    {
+        std::cerr << "File is not opened";
+        return 1;
+    }
+    std::string s2;
+    std::cout << "Please enter string - ";
+    std::cin >> s2;
+    std::string s1;
+    writing_in_file(f1, s2); 
+    f1.close(); 
+    return 0;
+}
