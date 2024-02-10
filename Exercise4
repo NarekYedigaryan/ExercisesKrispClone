@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void reverse_words_in_lines( std::string& file_name)
+{
+    std::reverse(file_name.begin(), file_name.end());
+}
+
+int main()
+{
+    std::ifstream f1("file.txt");
+    if (!f1.is_open())
+    {
+        std::cerr << "File is not opened";
+        return 1;
+    }
+
+    std::ofstream f2("output.txt");
+    std::string s1;
+    while (!f1.eof())
+    {
+        std::getline(f1, s1); 
+        reverse_words_in_lines(s1);
+        f2 << s1<<std::endl;
+    }
+    f1.close(); 
+    return 0;
+}
